@@ -26,7 +26,7 @@ for i=2:N+1
     while(norm>fp_eps && nb_iter<=fp_iter_max)
         newk1 = phi(T(i-1) + ((1/2)-(sqrt(3)/6)) , Y(i-1,:) + h*((1/4)*k1 +(((1/4)-(sqrt(3)/6))*k2)))';
         newk2 = phi(T(i-1) + ((1/2)+(sqrt(3)/6)) , Y(i-1,:) + h*(((1/4)+(sqrt(3)/6))*k1 +(1/4)*k2))';
-        norm = norm();
+        norm = norm([newk1-k1;newk2-k2]);
         nb_iter = nb_iter+1;
         k1=newk1;k2=newk2;
     end;
