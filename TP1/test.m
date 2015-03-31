@@ -26,8 +26,8 @@ plot(Ye(:,1),Ye(:,2),Yr(:,1),Yr(:,2),Yh(:,1),Yh(:,2),Yrk4(:,1),Yrk4(:,2),Yrk438(
 
 %Gauss
 itmax = 15;
-eps = 10^-12;
+eps = 1*10^-6;
 N = 10;
-ode_gauss(@phi,I,y0,[N itmax eps])
+[T,Y,nphi,ifail]=ode_gauss(@phi,I,y0,[N itmax eps])
 pause;
 close all;
