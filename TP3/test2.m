@@ -26,10 +26,13 @@ for t=theta
     G=[G;Y];
 end;
 
-H=G(:,50)
-L=reshape(G,2,[]);
-fill(L(1,:)',L(2,:)','r');
 
+for bach=[1 10 30 60 80 100];
+H=G(:,bach);
+L=reshape(H,2,[]);
+fill(L(1,:),L(2,:),'r');
+end;
+%plot(L(1,:)',L(2,:)','+')
 pause;
 
 C=[0.15;-0.6];
