@@ -32,7 +32,7 @@ for i=2:N+1
         %newk1 = fct(T(i-1) + h*((1/2)-(sqrt(3)/6)) , Y(i-1,:) + h*((1/4)*k1 +(((1/4)-(sqrt(3)/6))*k2)))';
         %newk2 = fct(T(i-1) + h*((1/2)+(sqrt(3)/6)) , Y(i-1,:) + h*(((1/4)+(sqrt(3)/6))*k1 +(1/4)*k2))';
         
-        Jg = [eye(2)-h*(1/4)*Jfct(t,Y(i-1,:)),-h*(((1/4)-(sqrt(3)/6)))*Jfct(t,Y(i-1,:));-h*(((1/4)+(sqrt(3)/6)))*Jfct(t,Y(i-1,:)),eye(2)-h*(1/4)*Jfct(t,Y(i-1,:))];
+        Jg = [eye(2)-h*(1/4)*Jfct(t,Y(i-1,:)),-h*(((1/4)-(sqrt(3)/6)))*Jfct(t,Y(i-1,:));-h*(((1/4)+(sqrt(3)/6)))*Jfct(t,[,]),eye(2)-h*(1/4)*Jfct(t,[,])];
         
         NEWK = Jg\(Jg*K-K+fct(t,K))
         
