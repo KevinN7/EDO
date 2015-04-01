@@ -1,3 +1,15 @@
+%Methode de Gauss(Resolution par la méthode du point fixe)
+%Eqn du type 
+%   dy(t)/dt = fct(t,y(t))
+%   y(t0)=y0
+%
+%IN:-fct fonction tq dy(t)/dt = fct(t,y(t))
+%   -I = [t0 tf] taille:1*2 intervalle de resolution t0<tf
+%   -y0  tel que y(to)=y0
+%   -N nombre de pas dans l'intervalle entier
+%
+%OUT:-T points approximés 
+%    -Y valeur des points de la fonction inconnue approximé
 function [T,Y,nphi,ifail] = ode_gauss(fct,I,y0,option)
 
 nphi=0;
@@ -20,12 +32,11 @@ Y(1,:) = y0(1,:);
 for i=2:N+1
     T(i) = t0+(i-1)*h;
     
-    %k1 = fct(T(i-1) , Y(i-1,:))';
-    %k2 = fct(T(i-1) + (1/3)*h , Y(i-1,:) + h*(1/3)*k1)';
     k1 = fct(T(i-1) + h*((1/2)-(sqrt(3)/6)) , Y(i-1,:))';
     k2 = fct(T(i-1) + h*((1/2)+(sqrt(3)/6)) , Y(i-1,:))';
     nphi=nphi+2;
     
+    %Recherche des ki par point fixe
     nb_iter=1;normp=1;
     while(normp>fp_eps && nb_iter<fp_iter_max)
         newk1 = fct(T(i-1) + h*((1/2)-(sqrt(3)/6)) , Y(i-1,:) + h*((1/4)*k1 +(((1/4)-(sqrt(3)/6))*k2)))';

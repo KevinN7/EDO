@@ -1,3 +1,16 @@
+%Methode d'Euler
+%Eqn du type 
+%   dy(t)/dt = fct(t,y(t))
+%   y(t0)=y0
+%
+%IN:-fct fonction tq dy(t)/dt = fct(t,y(t))
+%   -I = [t0 tf] taille:1*2 intervalle de resolution t0<tf
+%   -y0  tel que y(to)=y0
+%   -N nombre de pas dans l'intervalle entier
+%
+%OUT:-T points approximés 
+%    -Y valeur des points de la fonction inconnue approximé
+
 function [T,Y] = ode_euler(fct,I,y0,N)
 
 %init

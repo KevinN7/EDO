@@ -33,6 +33,8 @@ legend('euler','runge','heun','rk4','rk4_38');
 xlabel('y1(t)');
 ylabel('y2(t)');
 
+
+
 figure;
 plot(T(:),Ye(:,1),T(:),Yr(:,1),T(:),Yh(:,1),T(:),Yrk4(:,1),T(:),Yrk438(:,1));
 legend('euler','runge','heun','rk4','rk4_38');
@@ -54,8 +56,42 @@ ylabel('y2(t)');
 pause;
 close all;
 
+% %PARTIE 2
+% 
+% itmax = 15;
+% eps = 1*10^-12;
+% N = 10;
+% [T,Y,nphi,ifail]=ode_gauss(@phi,I,y0,[N itmax eps])
+% 
+% %T = [120:60:1080 1200:600:10800];
+% 
+% figure;
+% plot(T(:),Ye(:,1),T(:),Yr(:,1),T(:),Yh(:,1),T(:),Yrk4(:,1),T(:),Yrk438(:,1));
+% legend('euler','runge','heun','rk4','rk4_38');
+% xlabel('t');
+% ylabel('y1(t)');
+% 
+% figure;
+% plot(T(:),Ye(:,2),T(:),Yr(:,2),T(:),Yh(:,2),T(:),Yrk4(:,2),T(:),Yrk438(:,2));
+% legend('euler','runge','heun','rk4','rk4_38');
+% xlabel('t');
+% ylabel('y2(t)');
+% 
+% figure;
+% plot(Ye(:,1),Ye(:,2),Yr(:,1),Yr(:,2),Yh(:,1),Yh(:,2),Yrk4(:,1),Yrk4(:,2),Yrk438(:,1),Yrk438(:,2));
+% legend('euler','runge','heun','rk4','rk4_38');
+% xlabel('y1(t)');
+% ylabel('y2(t)');
+
+
+
+%Gauss
+
+
 
 %Erreur Globale
+pause;
+close all;
 
 E1=[];E2=[];
 
@@ -107,47 +143,15 @@ Eg2=log10(Eg2);
     
 
 figure;
-plot(log10(Il),E1(1,:),log10(Il),E1(2,:),log10(Il),E1(3,:),log10(Il),E1(4,:),log10(Il),E1(5,:),log10(Ilg),Eg1(:));
+plot(log10(Il),E1(1,:),log10(Il),E1(2,:),log10(Il),E1(3,:),log10(Il),E1(4,:),log10(Il),E1(5,:),log10(Ilg),Eg1);
 legend('euler','runge','heun','rk4','rk4_38','gauss');
 ylabel('y1(t)');
 xlabel('log10(nphi)');
 
 figure;
-plot(log10(Il),E2(1,:),log10(Il),E2(2,:),log10(Il),E2(3,:),log10(Il),E2(4,:),log10(Il),E2(5,:),log10(Ilg),Eg2(:));
+plot(log10(Il),E2(1,:),log10(Il),E2(2,:),log10(Il),E2(3,:),log10(Il),E2(4,:),log10(Il),E2(5,:));
 legend('euler','runge','heun','rk4','rk4_38','gauss');
 ylabel('y2(t)');
 xlabel('log10(nphi)');
-
-pause;
-close all;
-
-%Gauss implicite
-N=25;
-itmax = 15;
-eps = 1*10^-12;
-[Tg,Yg1,nphi,ifail]=ode_gauss(@phi,I,y0,[N itmax eps]);
-
-itmax = 2;
-eps = 1*10^-12;
-[Tg,Yg2,nphi,ifail]=ode_gauss(@phi,I,y0,[N itmax eps]);
-
-itmax = 15;
-eps = 1*10^-6;
-[Tg,Yg3,nphi,ifail]=ode_gauss(@phi,I,y0,[N itmax eps]);
     
-figure;
-plot(Tg(:),Yg1(:,1),Tg(:),Yg2(:,1),Tg(:),Yg3(:,1));
-legend('itmax 15 eps 1*10^-12','itmax 2 eps 1*10^-12','itmax 15 eps 1*10^-6');
-xlabel('t');
-ylabel('y1(t)');
-
-figure;
-plot(Tg(:),Yg1(:,2),Tg(:),Yg2(:,2),Tg(:),Yg3(:,2));
-legend('itmax 15 eps 1*10^-12','itmax 2 eps 1*10^-12','itmax 15 eps 1*10^-6');
-xlabel('t');
-ylabel('y2(t)');
-
-pause;
-close all;
-
     
