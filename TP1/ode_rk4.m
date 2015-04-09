@@ -26,9 +26,12 @@ Y(1,:) = y0(1,:);
 for i=2:N+1
     T(i) = t0+(i-1)*h;
     
+    %Calcul des ki
     k1 = fct(T(i-1),Y(i-1,:))';
     k2 = fct(T(i-1)+(1/2)*h , Y(i-1,:) + h*(1/2)*k1)';
     k3 = fct(T(i-1)+(1/2)*h , Y(i-1,:)+h*(1/2)*k2)';
     k4 = fct(T(i-1)+h , Y(i-1,:)+h*k3)';
+    
+    %Approximation de Y(i)
     Y(i,:) = Y(i-1,:) + h*((1/6)*k1 +(2/6)*k2 +(2/6)*k3 +(1/6)*k4 );
 end;

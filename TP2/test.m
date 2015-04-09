@@ -18,12 +18,12 @@ N=30;
 [T,Yrk438] = ode_rk4_38(@phi,I,y0,N);
 [T,YG,nphi,ifail]=ode_gauss(@phi,I,y0,[N itmax eps]);
 
-
 figure;
 plot(T(:),Ye(:),T(:),Yr(:),T(:),Yh(:),T(:),Yrk4(:),T(:),Yrk438(:),T(:),YG(:));
 legend('euler','runge','heun','rk4','rk4_38','Gauss');
 xlabel('t');
 ylabel('y(t)');
+
 
 
 N=40;
@@ -58,6 +58,7 @@ xlabel('t');
 ylabel('y(t)');
 
 
+
 N=100;
 
 [T,Ye] = ode_euler(@phi,I,y0,N);
@@ -78,6 +79,8 @@ ylabel('y(t)');
 pause;
 
 close all;
+
+%Test pour l'equation de Curtiss
 
 y0 = 0;
 
