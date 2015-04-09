@@ -18,9 +18,9 @@ N=30;
 [T,Yrk438] = ode_rk4_38(@phi,I,y0,N);
 [T,YG,nphi,ifail]=ode_gauss(@phi,I,y0,[N itmax eps]);
 
-
 figure;
 plot(T(:),Ye(:),T(:),Yr(:),T(:),Yh(:),T(:),Yrk4(:),T(:),Yrk438(:),T(:),YG(:));
+
 
 N=40;
 
@@ -33,8 +33,9 @@ N=40;
 
 figure;
 plot(T(:),Ye(:),T(:),Yr(:),T(:),Yh(:),T(:),Yrk4(:),T(:),Yrk438(:),T(:),YG(:));
-N=80;
 
+
+N=80;
 
 [T,Ye] = ode_euler(@phi,I,y0,N);
 [T,Yr] = ode_runge(@phi,I,y0,N);
@@ -45,6 +46,7 @@ N=80;
 
 figure;
 plot(T(:),Ye(:),T(:),Yr(:),T(:),Yh(:),T(:),Yrk4(:),T(:),Yrk438(:),T(:),YG(:));
+
 
 N=100;
 
@@ -63,6 +65,8 @@ plot(T(:),Ye(:),T(:),Yr(:),T(:),Yh(:),T(:),Yrk4(:),T(:),Yrk438(:),T(:),YG(:));
 pause;
 
 close all;
+
+%Test pour l'equation de Curtiss
 
 y0 = 0;
 
@@ -97,8 +101,9 @@ N=floor(50*tf/1.875);
 
 figure;
 plot(T(:),Ye(:),T(:),Yr(:),T(:),Yh(:),T(:),Yrk4(:),T(:),Yrk438(:),T(:),YG(:));
-N=50;
 
+
+N=50;
 
 [T,Ye] = ode_euler(@phiCurtiss,I,y0,N);
 [T,Yr] = ode_runge(@phiCurtiss,I,y0,N);
@@ -109,6 +114,7 @@ N=50;
 
 figure;
 plot(T(:),Ye(:),T(:),Yr(:),T(:),Yh(:),T(:),Yrk4(:),T(:),Yrk438(:),T(:),YG(:));
+
 
 N=100;
 
